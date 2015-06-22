@@ -1,0 +1,37 @@
+apply plugin: 'java'
+//apply from: 'scala.gradle'
+//apply from: 'kotlin.gradle'
+apply from: 'spark.gradle'
+//apply plugin: "kotlin"
+
+//repositories {
+//    mavenCentral()
+//}
+
+task showenv <<{
+    println System.getenv()
+}
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'http://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.1-SNAPSHOT'
+    }
+}
+
+apply plugin: "kotlin" // or apply plugin: "kotlin2js" if targeting JavaScript
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:0.1-SNAPSHOT'
+}

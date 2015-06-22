@@ -1,0 +1,19 @@
+//apply plugin: 'war'
+//apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+apply plugin: 'application'
+
+dependencies{
+//    compile 'com.sparkjava:spark-core:1.1.1'
+    compile 'com.sparkjava:spark-core:2.2'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-codec:commons-codec:1.5'
+}
+
+//mainClassName = 'hello.HelloPackage'
+mainClassName = 'com.naosim.spark.Main'
+
+run {
+    if (project.hasProperty('args')) {    // "args" というプロパティが渡されていたら
+        args project.args.split('\\s+')   // 空白文字で split して、 run タスクの args オプションにセットする
+    }
+}
